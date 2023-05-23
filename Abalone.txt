@@ -1,0 +1,69 @@
+import pandas as pd
+
+
+
+df = pd.read_csv("C:/Users/OM/OneDrive/Desktop/abalone.csv")
+
+
+
+df.head()
+
+
+
+df.info()
+
+
+
+df.isna().sum()
+
+
+
+df.Sex.value_counts()
+
+
+
+df.replace(to_replace="M",value=1,inplace=True)
+df.replace(to_replace="F",value=0,inplace=True)
+df.replace(to_replace="I",value=2,inplace=True)
+df
+
+
+
+df.info()
+
+
+
+
+
+import sklearn
+from sklearn.model_selection import train_test_split
+
+
+
+x = df.drop("Rings",axis=1)
+y = df.Rings
+
+
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.3,random_state = 42)
+
+
+
+
+
+from sklearn.linear_model import LinearRegression
+
+
+
+lr= LinearRegression()
+
+
+
+
+lr.fit(x_train,y_train)
+
+
+
+
+lr.score(x_test,y_test)
+
+
