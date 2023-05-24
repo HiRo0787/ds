@@ -1,0 +1,45 @@
+pip install textblob
+
+
+
+# Importing TextBlob
+from textblob import TextBlob
+
+
+
+
+# Preparing an input sentence
+sentence = '''The worst are "empty" negative responses, such as, "this article sucks and was written by an idiot!" since they provide no assistance in improving an article. The more emotional the negative response, the more strange. If one cares enough about an issue, topic, or person so as to post a highly charged comment, and if one actually knows enough to know whether an article is right or wrong/good or bad, one could have spent one's time fixing the article instead of posting insults. '''
+
+# Creating a textblob object and assigning the sentiment property
+analysis = TextBlob(sentence).sentiment
+print(analysis)
+
+
+
+
+
+analysisPol = TextBlob(sentence).polarity
+analysisSub = TextBlob(sentence).subjectivity
+
+print(analysisPol)
+print(analysisSub)
+
+
+
+
+
+def classify_sentiment(text):
+    testimonial = TextBlob(text)
+    polarity = testimonial.sentiment.polarity
+    if polarity > 0:
+        return "Positive"
+    elif polarity < 0:
+        return "Negative"
+    else:
+        return "Neutral"
+
+
+
+
+classify_sentiment(sentence)
